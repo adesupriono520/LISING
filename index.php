@@ -8,6 +8,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="CSS/index.css">
+    <?php
+        include_once('connection.php');
+        $sql = sqlsrv_query($conn,"SELECT *FROM PROFILE INNER JOIN KENDARAAN ON PROFILE.id = KENDARAAN.profile_id
+        JOIN PINJAMAN ON PROFILE.id = PINJAMAN.profile_id");
+    ?>
     <title>HOME</title>
 </head>
     <body>
@@ -17,61 +22,41 @@
                 <table class="w3-table-all w3-card-4">
                     <tr>
                         <th><center>ID</center></th>
-                        <th><center>No Polisi</center></th>
                         <th><center>Nama</center></th>
                         <th><center>Alamat</center></th>
                         <th><center>Jenis Kelamin</center></th>
                         <th><center>No Hp</center></th>
-                        <th><center>Jenis kendaraan</center></th>
-                        <th><center>Tanggal</center></th>
-                        <th><center>Tempo</center></th>
+                        <th><center>Nopol</center></th>
+                        <th><center>Jenis Kendaraan</center></th>
                         <th><center>Angsuran</center></th>
-                        <th><center>Jumlah Pinjaman</center></th>
+                        <th><center>Action</center></th>
                     </tr>
-                    <tr>
-                        <td><center>001</center></td>
-                        <td><center>B.1571 BVL</center></td>
-                        <td><center>IRWAN</center></td>
-                        <td><center>JL.Kebagusan Raya NO.12D RT.001 RW.005 Jakarta Pusat</center></td>
-                        <td><center>L</center></td>
-                        <td><center>021678954672</center></td>
-                        <td><center>MOTOR</center></td>
-                        <th><center>17-01-2021</center></th>
-                        <th><center>17-01-2022</center></th>
-                        <td><center>10</center></td>
-                        <td><center>10.000.000</center></td>
-                    </tr>
-                    <tr>
-                        <td><center>002</center></td>
-                        <td><center>A.1071 CKC</center></td>
-                        <td><center>AHMAD</center></td>
-                        <td><center>JL.Ternate No.57B RT.002 RW.007 Kecamatan Solear Kabupaten Tangerang</center></td>
-                        <td><center>L</center></td>
-                        <td><center>089520262072</center></td>
-                        <td><center>MOBIL</center></td>
-                        <th><center>18-01-2021</center></th>
-                        <th><center>18-01-2022</center></th>
-                        <td><center>5</center></td>
-                        <td><center>25.000.000</center></td>
-                    </tr>
-                    <tr>
-                        <td><center>003</center></td>
-                        <td><center>B.1423 XP</center></td>
-                        <td><center>WULAN</center></td>
-                        <td><center>JL.Mandioli No.17B RT.005 RW.002 Kecamatan Gambir Jakarta Pusat</center></td>
-                        <td><center>P</center></td>
-                        <td><center>089617514567</center></td>
-                        <td><center>MOTOR</center></td>
-                        <th><center>19-01-2021</center></th>
-                        <th><center>19-01-2022</center></th>
-                        <td><center>2</center></td>
-                        <td><center>5.000.000</center></td>
-                    </tr>
+                    <?php
+                        while($data = sqlsrv_fetch_array($sql)){
+                            echo"<tr>
+                                    <td><center>$data[id]</center></td>
+                                    <td><center>$data[nama]</center></td>
+                                    <td><center>$data[alamat]</center></td>
+                                    <td><center>$data[jenis_kelamin]</center></td>
+                                    <td><center>$data[no_hp]</center></td>
+                                    <td><center>$data[nopol]</center></td>
+                                    <td><center>$data[jenis_kendaraan]</center></td>
+                                    <td><center>$data[angsuran]</center></td>
+                                    <td>
+                                        <a href='detail.php'><input type='button' name='detail' class='btn btn-success btn-sm' value='DETAIL'></a>
+                                        <a href='edit.php'><input type='button' name='edit' class='btn btn-warning btn-sm' value='EDIT'></a>
+                                        <a href='delete.php'><input type='button' name='delete' class='btn btn-danger btn-sm' value='DELETE'></a>
+                                    </td>
+                                </tr>";
+                        }
+                    ?>
                 </table>
             </form>
             <br>
             <tr>
-                <td><a href="create.php"><button type="button"class="btn btn-primary form-control">Create</button></a></td>
+                <td><a href="create_profile.php"><button type="button"class="btn btn-primary">Create Profile</button></a></td>
+                <td><a href="create_kendaraan.php"><button type="button"class="btn btn-primary">Create Kendaraan</button></a></td>
+                <td><a href="create_pinjaman.php"><button type="button"class="btn btn-primary">Create Pinjaman</button></a></td>
             </tr>
         </div>  
     </body>

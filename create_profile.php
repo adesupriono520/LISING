@@ -18,10 +18,6 @@
             <div class="w3-panel w3-card">
                 <form action="create.php" action="post">
                     <div class="form-group">
-                        <label for="nopol">Nomor Polisi :</label>
-                        <input type="text" class="form-control"name="nopol" id="nopol">
-                    <div>
-                    <div class="form-group">
                         <label for="nama">Nama :</label>
                         <input type="text" class="form-control"name="nama" id="nama">
                     <div>
@@ -40,22 +36,6 @@
                     <div class="form-group">
                         <label for="jenis">Jenis Kendaraan :</label>
                         <input type="text" class="form-control"name="jenis" id="jenis">
-                    <div>
-                    <div class="form-group">
-                        <label for="tgl">Tanggal :</label>
-                        <input type="date" class="form-control"name="tgl" id="tgl">
-                    <div>
-                    <div class="form-group">
-                        <label for="tempo">Tempo :</label>
-                        <input type="date" class="form-control"name="tempo" id="tempos">
-                    <div>
-                    <div class="form-group">
-                        <label for="angsuran">Angsuran :</label>
-                        <input type="number" class="form-control"name="angsuran" id="jenis">
-                    <div>
-                    <div class="form-group">
-                        <label for="pinjaman">Jumlah Pinjaman :</label>
-                        <input type="number" class="form-control"name="jp" id="jp">
                     <div>
                 </form>
             </div>
